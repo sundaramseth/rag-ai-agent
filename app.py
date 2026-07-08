@@ -94,7 +94,7 @@ if ask:
 
         db = vector_store.create_vectorstore(chunks)
 
-        st.success("Vector Store Created Successfully!")
+        st.success("Embedding done! Vector Store Created Successfully!")
 
         st.success(f"Pages Loaded : {len(document)}")
 
@@ -107,6 +107,7 @@ if ask:
             if len(chunks) > 1:
                 st.write(chunks[1].page_content)
 
+        # create retriever and retrieve relevant chunks
 
         retriever = vector_store.get_retriever(db)
 
@@ -114,14 +115,13 @@ if ask:
 
         st.subheader("Retrieved Chunks")
 
-
         for i, doc in enumerate(results):
 
-            st.markdown(f"### Chunk {i+1}")
-
-            st.write(doc.page_content[:500])
-
-            st.divider()
+            with st.expander(f"### Chunk {i+1}"):
+                st.write(doc.page_content[:500])
+        
+        
+        st.divider()
 
         # generate answer using RAGPipeline
         tool = DocumentSearchTool(
