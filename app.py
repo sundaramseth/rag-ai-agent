@@ -1,7 +1,6 @@
 import os
 import streamlit as st
 
-st.write("GOOGLE_API_KEY exists:", bool(os.getenv("GOOGLE_API_KEY")))
 import os
 from loaders.document_loader import DocumentLoader
 from rag import RAGPipeline
