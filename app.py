@@ -1,4 +1,6 @@
 import streamlit as st
+print("Streamlit version:System  Running", st.__version__)
+
 import os
 from loaders.document_loader import DocumentLoader
 from rag import RAGPipeline
